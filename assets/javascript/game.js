@@ -4,7 +4,6 @@ $(document).ready(function() {
     let losses = 0;
     let score = 0;
 
-
     var game = {
         randomNumber: function(min, max) {
             return Math.floor(Math.random()*(max-min+1)+min);
@@ -18,51 +17,49 @@ $(document).ready(function() {
         assignIntValues: function() {
             $('.crystal').each(function() {
                 var intValue = game.randomNumber(1, 19);
-                $(this).html('<button>'+ intValue + '</button>')
+                $(this).html('<button>'+ intValue + '</button>');
                 $(this).val(intValue);
             });
         },
         
-        addToScore: function(userSelection) {
+        countScore: function(userSelection) {
             score += +$(userSelection).val();
             $('.score').text(score);
         },
         
         resetGame: function() {
             score = 0;
-            this.randomNumber() = gameNumber;
-            this.generateIntValues();
+            $('.score').text(score);
+            this.generateGameValue();
+            this.assignIntValues();
         },
 
         loseGame: function() {
             if (score > gameNumber) {
-                $('.losses').text(losses++);
-                this.resetGame()
+                $('.losses').text(losses+=1);
+                this.resetGame();
             };
         },
         
         winGame: function() {
             if (score == gameNumber) {
-                $('.wins').text(wins++);
+                $('.wins').text(wins+=1);
                 this.resetGame();
             };
         },
     };
 
     var eventHandlers = {
-        addToScore: $('.crystal').click(function() {
-           game.addToScore(this);
-        }),
-
-        checkTotal: $('crystal').click(function() { 
-            game.loseGame();
-            game.winGame();
+        scoreMonitor: $('.crystal').click(function() {
+           game.countScore(this);
+           game.loseGame(this);
+           game.winGame(this);
         }),
 
         intializeGame: $('.newGame').click(function() {
-            game.assignIntValues()
-            game.generateGameValue();
-        })
+            game.resetGame();
+            $(this).remove();
+        }),
     };
 
 });
