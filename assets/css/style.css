@@ -1,0 +1,52 @@
+p {
+    margin-bottom: 8px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: bold;
+    padding: 8px;
+}
+
+.gamePad {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    padding: 20px;
+    border: 3px outset grey;
+    float: left;
+}
+
+.newGame {
+    padding: 10px;
+    font-size: 20px;
+    position: absolute;
+    right:    -20;
+    bottom:   -200;
+}
+
+#pad1 {
+    background: red;
+}
+
+#pad2 {
+    background: blue;
+}
+
+#pad3 {
+    background: green;
+}
+
+#pad4 {
+    background: yellow;
+}
+
+#loser {
+    float: left;;
+}
+
+#winner {
+    float: left;
+}
