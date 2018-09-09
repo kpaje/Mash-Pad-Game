@@ -11,30 +11,50 @@
 </head>
 <body>
     <div class="container">
-        <div>
-            <h1 class='text-center'>Welcome to the Sibling simulator!</h1>
+        <div class="row">
             <div class='text-center'>
+                <h1>Welcome to The Sibling Simulator!</h1>
+                
                 <p>Here, you are the youngest child playing against your older sibling!</p>
-                <p>Mash buttons to win! Because you have no idea what you're doing!</p>
+                <p>Mash buttons to win! Figure it out, buddy, you have no idea what you're doing!</p>
                 <p>Win or Lose, your feelings get hurt! Just like how an older sibling shows love in real life!</p>
             </div>
         </div>
             
-        <div>
+        <div class="row">
             <div>Goal = <h5 class='targetValue'></h5></div>
             <div>Wins = <h5 class='wins'></h5></div>
             <div>Losses = <h5 class='losses'></h5></div>
             <div>Score = <h5 class='score'></h5></div>
         </div>
         <br>
-        <div>
-            <div class='gamePad' id='pad1'></div>
-            <div class='gamePad' id='pad2'></div>
-            <div class='gamePad' id='pad3'></div>
-            <div class='gamePad' id='pad4'></div>
+        <progress id="health"></progress>
+
+
+        <div class="row d-none">
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="gamePad" id="pad1"></div>
+                </div>
+                <div class="row">
+                    <div class="gamePad" id="pad3"></div>
+                    <div class="col-1"></div>
+                    <div class="gamePad" id="pad2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="gamePad" id="pad4"></div>
+                </div>
+            </div>
         </div>
-    
-        <button class="newGame">Start Game</button>
+            
+            
+
+            <br><br><br>
+        <div>
+            <button class="newGame">Start Game</button>
+        </div>
     
         <img id='loser'>
         <img id='winner'>

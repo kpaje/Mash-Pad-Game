@@ -30,6 +30,7 @@ $(document).ready(function() {
         generateTargetValue: function() {
             targetValue = this.randomValue(19, 120);
             $('.targetValue').text(targetValue);
+            $('#health').val(targetValue);
         },
 
         assignPointsValue: function() {
@@ -77,6 +78,7 @@ $(document).ready(function() {
 
         intializeGame: $('.newGame').click(function() {
             game.resetGame();
+            $('div').removeClass('d-none');
             $(this).remove();
         }),
 
