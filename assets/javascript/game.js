@@ -47,7 +47,7 @@ $(document).ready(function() {
             $(".health-bar").animate({
                 'width': hpToPercentRatio + "%"
             }, 500);
-            $('.total').html(curHitPoints + "/" + maxHitPoints);
+            // $('.total').html(curHitPoints + "/" + maxHitPoints);
         },
 
         resetHealthBar: function () {
@@ -55,7 +55,7 @@ $(document).ready(function() {
             $(".health-bar-text").html(curHitPoints + ' HP');
             $('.health-bar-red').css('width', '100%');
             $('.health-bar').css('width', '100%');
-            $('.total').html(maxHitPoints + "/" + maxHitPoints);
+            // $('.total').html(maxHitPoints + "/" + maxHitPoints);
         },
         
         resetGame: function() {
@@ -92,8 +92,8 @@ $(document).ready(function() {
 
         applyDamage: $(".add-damage").click(function() {
             curHitPoints = curHitPoints - damage;
-            game.winGame();
             game.applyDamage(curHitPoints);
+            game.winGame();
         }),
 
         intializeGame: $('.newGame').click(function() {
@@ -121,5 +121,35 @@ $(document).ready(function() {
             }, 5000);
         },
     };
+
+    $('#pad1').click(function(e) {
+        $('.ken').addClass('punch');
+        setTimeout(function() { 
+            $('.ken').removeClass('punch'); 
+        }, 250);
+    });
+    // $('#pad2').click(function(e) {
+    //     $('.ken').addClass('hadoken');
+    //     setTimeout(function() { 
+    //         $('.ken').removeClass('hadoken'); 
+    //     }, 250);
+    // });
+
+
+    // var $fireball = $('<div/>', {class:'fireball'});
+    // $fireball.appendTo($('.ken'));
+
+    // var isFireballColision = function(){ 
+    //     return $fireballPos.left + 75 > $(window).width();
+    // };
+
+    // var explodeIfColision = setInterval(function(){
+    //     $fireballPos = $fireball.offset();
+    //     if (isFireballColision()) {
+    //         $fireball.addClass('explode'); 
+    //         clearInterval(explodeIfColision);
+    //         setTimeout(function() { $fireball.remove(); }, 500); 
+    //     }
+    // }, 50);
 });
 
