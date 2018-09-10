@@ -26,10 +26,10 @@ $(document).ready(function() {
             $('.maxHitPoints').text(maxHitPoints);
         },
 
-        assignPointsValue: function() {
+        assignDamageValue: function() {
             $('.gamePad').each(function() {
-                var pointsValue = game.randomValue(1, 19);
-                $(this).val(pointsValue);
+                var damageValue = game.randomValue(1, 19);
+                $(this).val(damageValue);
             });
         },
         
@@ -37,15 +37,32 @@ $(document).ready(function() {
             damage = +$(userSelection).val();
             $('.damage').text(damage);
         },
-        
-        resetGame: function() {
-            $('.damage').text(damage);
-            this.generateHitPoints();
+
+        applyDamage: function(curHitPoints) {
+            var hpToPercentRatio = curHitPoints * (100 / maxHitPoints);
+            $(".health-bar-text").html(curHitPoints + ' HP');
+            $(".health-bar-red").animate({
+                'width': hpToPercentRatio + "%"
+            }, 700);
+            $(".health-bar").animate({
+                'width': hpToPercentRatio + "%"
+            }, 500);
+            $('.total').html(curHitPoints + "/" + maxHitPoints);
+        },
+
+        resetHealthBar: function () {
             curHitPoints = maxHitPoints;
+            $(".health-bar-text").html(curHitPoints + ' HP');
+            $('.health-bar-red').css('width', '100%');
             $('.health-bar').css('width', '100%');
             $('.total').html(maxHitPoints + "/" + maxHitPoints);
-            $(".health-bar-text").html(curHitPoints + ' HP');
-            this.assignPointsValue();
+        },
+        
+        resetGame: function() {
+            this.generateHitPoints();
+            this.assignDamageValue();
+            $('.damage').text(' ');
+            this.resetHealthBar();
         },
 
         // loseGame: function() {
@@ -62,6 +79,7 @@ $(document).ready(function() {
                 eventHandlers.showWinnerImage();
                 setTimeout(function() {
                     game.resetGame();
+                    game.resetHealthBar();
                 }, 2000);
             };
         },
@@ -75,7 +93,7 @@ $(document).ready(function() {
         applyDamage: $(".add-damage").click(function() {
             curHitPoints = curHitPoints - damage;
             game.winGame();
-            applyChange(curHitPoints);
+            game.applyDamage(curHitPoints);
         }),
 
         intializeGame: $('.newGame').click(function() {
@@ -103,17 +121,5 @@ $(document).ready(function() {
             }, 5000);
         },
     };
-
-  
-    function applyChange(curHitPoints) {
-        $(".health-bar-text").html(curHitPoints + ' HP');
-        $(".health-bar-red").animate({
-            'width': curHitPoints + "%"
-        }, 700);
-        $(".health-bar").animate({
-            'width': curHitPoints + "%"
-        }, 500);
-        $('.total').html(curHitPoints + "/" + maxHitPoints);
-    }
 });
 
