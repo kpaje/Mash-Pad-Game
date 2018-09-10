@@ -1,25 +1,19 @@
 $(document).ready(function() {
-    let targetValue = 0;
+    let maxHitPoints = 0, curHitPoints = maxHitPoints;
     let wins = 0;
     let losses = 0;
-    let score = 0;
-
-    const loseImgs = [
-        "https://media1.tenor.com/images/392439cf19e698d6fece11220e45a7e3/tenor.gif?itemid=4200659",
-        "https://media.giphy.com/media/joHVQBm1RJtbq/giphy.gif",
-        "https://media.giphy.com/media/11pQizRLu1JP0c/giphy.gif",
-        "https://media0.giphy.com/media/13k0uUW3Aicx20/200w.gif",
-        "https://media1.tenor.com/images/31bce3dce08436b767da9ac35a69a13f/tenor.gif?itemid=4762099",
-        "http://33.media.tumblr.com/feefd040f219ad92cc4188c402a009cc/tumblr_n7432lLPu61smcbm7o1_500.gif",
-    ];
+    let damage = 0;
 
     const winImgs = [
-        "https://media.giphy.com/media/yjvUtGGCX4Swo/giphy.gif",
         "https://thumbs.gfycat.com/VibrantElasticKoalabear-size_restricted.gif",
         "http://www.gurl.com/wp-content/uploads/2013/07/tumblr_mgeaegWdiV1r8o0xao1_500.gif",
-        "https://assets.rbl.ms/5000642/980x.jpg",
         "https://media1.popsugar-assets.com/files/thumbor/gJnh-gX8egebm6qeRw_zvQ39y7Q/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2016/01/13/846/n/3019466/3dd68cf1c18287ce_hm/i/He-basically-your-favorite-person-fight.gif",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgshrrDixRxZq8wq46qD2OQsWmZw1J_WgKWA8lhmgWQH74PvAi",
+        "https://media1.tenor.com/images/31bce3dce08436b767da9ac35a69a13f/tenor.gif?itemid=4762099",
+        "http://33.media.tumblr.com/feefd040f219ad92cc4188c402a009cc/tumblr_n7432lLPu61smcbm7o1_500.gif",
+        "https://thumbs.gfycat.com/DisfiguredLikableAlpinegoat-size_restricted.gif",
+        "http://www.reactiongifs.com/r/ashley-wagner-BS.gif",
+        "https://media1.tenor.com/images/5eb39cc9c48bc16a83ccfdc58c1037da/tenor.gif?itemid=7203986",
+        "https://images.gr-assets.com/hostedimages/1412437686ra/11375665.gif",
     ];
 
     var game = {
@@ -27,10 +21,9 @@ $(document).ready(function() {
             return Math.floor(Math.random()*(max-min+1)+min);
         },
 
-        generateTargetValue: function() {
-            targetValue = this.randomValue(19, 120);
-            $('.targetValue').text(targetValue);
-            $('#health').val(targetValue);
+        generateHitPoints: function() {
+            maxHitPoints = this.randomValue(19, 120);
+            $('.maxHitPoints').text(maxHitPoints);
         },
 
         assignPointsValue: function() {
@@ -40,44 +33,54 @@ $(document).ready(function() {
             });
         },
         
-        countScore: function(userSelection) {
-            score += +$(userSelection).val();
-            $('.score').text(score);
+        countDamage: function(userSelection) {
+            damage = +$(userSelection).val();
+            $('.damage').text(damage);
         },
         
         resetGame: function() {
-            score = 0;
-            $('.score').text(score);
-            this.generateTargetValue();
+            $('.damage').text(damage);
+            this.generateHitPoints();
+            curHitPoints = maxHitPoints;
+            $('.health-bar').css('width', '100%');
+            $('.total').html(maxHitPoints + "/" + maxHitPoints);
+            $(".health-bar-text").html(curHitPoints + ' HP');
             this.assignPointsValue();
         },
 
-        loseGame: function() {
-            if (score > targetValue) {
-                $('.losses').text(losses+=1);
-                eventHandlers.showLoserImage();
-                this.resetGame();
-            };
-        },
+        // loseGame: function() {
+        //     if (curHitPoints < 0) {
+        //         $('.losses').text(losses+=1);
+        //         eventHandlers.showLoserImage();
+        //         this.resetGame();
+        //     };
+        // },
         
         winGame: function() {
-            if (score == targetValue) {
+            if (curHitPoints <= 0) {
                 $('.wins').text(wins+=1);
                 eventHandlers.showWinnerImage();
-                this.resetGame();
+                setTimeout(function() {
+                    game.resetGame();
+                }, 2000);
             };
         },
     };
 
     var eventHandlers = {
-        scoreMonitor: $('.gamePad').click(function() {
-           game.countScore(this);
-           game.loseGame(this);
-           game.winGame(this);
+        damageMonitor: $('.gamePad').click(function() {
+            game.countDamage(this);
+        }),
+
+        applyDamage: $(".add-damage").click(function() {
+            curHitPoints = curHitPoints - damage;
+            game.winGame();
+            applyChange(curHitPoints);
         }),
 
         intializeGame: $('.newGame').click(function() {
             game.resetGame();
+            $(".health-bar-text").html(curHitPoints + ' HP');
             $('div').removeClass('d-none');
             $(this).remove();
         }),
@@ -100,4 +103,17 @@ $(document).ready(function() {
             }, 5000);
         },
     };
+
+  
+    function applyChange(curHitPoints) {
+        $(".health-bar-text").html(curHitPoints + ' HP');
+        $(".health-bar-red").animate({
+            'width': curHitPoints + "%"
+        }, 700);
+        $(".health-bar").animate({
+            'width': curHitPoints + "%"
+        }, 500);
+        $('.total').html(curHitPoints + "/" + maxHitPoints);
+    }
 });
+

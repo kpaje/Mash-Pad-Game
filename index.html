@@ -22,46 +22,49 @@
         </div>
             
         <div class="row">
-            <div>Goal = <h5 class='targetValue'></h5></div>
+            <div>Goal = <h5 class='maxHitPoints'></h5></div>
             <div>Wins = <h5 class='wins'></h5></div>
             <div>Losses = <h5 class='losses'></h5></div>
-            <div>Score = <h5 class='score'></h5></div>
+            <div>Damage = <h5 class='damage'></h5></div>
         </div>
         <br>
-        <progress id="health"></progress>
+        <div class="total"></div>
+        <div class="health-box">
+            <div class="health-bar-red"></div>
+            <div class="health-bar-combine"></div>
+            <div class="health-bar"></div>
+            <div class="health-bar-text"></div>
+        </div>
 
 
         <div class="row d-none">
             <div class="col-6">
                 <div class="row">
                     <div class="col-1"></div>
-                    <div class="gamePad" id="pad1"></div>
+                    <div class="gamePad add-damage" id="pad1"></div>
                 </div>
                 <div class="row">
-                    <div class="gamePad" id="pad3"></div>
+                    <div class="gamePad add-damage" id="pad3"></div>
                     <div class="col-1"></div>
-                    <div class="gamePad" id="pad2"></div>
+                    <div class="gamePad add-damage" id="pad2"></div>
                 </div>
                 <div class="row">
                     <div class="col-1"></div>
-                    <div class="gamePad" id="pad4"></div>
+                    <div class="gamePad add-damage" id="pad4"></div>
                 </div>
             </div>
         </div>
-            
-            
 
-            <br><br><br>
         <div>
             <button class="newGame">Start Game</button>
         </div>
     
-        <img id='loser'>
+        <!-- <img id='loser'> -->
         <img id='winner'>
     </div>
 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="./assets/javascript/game.js"></script>
 </body>
 </html>
