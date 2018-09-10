@@ -10,6 +10,21 @@ h1 {
     padding: 8px;
 }
 
+img {
+    max-width:100%;
+    max-height:100%;
+}
+
+.gif {
+    width: 500px;
+    height: 240px;
+    padding-left: 10px;
+}
+
+.scorebox {
+    height: 50px;
+}
+
 
 /* 
 =============
@@ -41,6 +56,7 @@ h1 {
 
 #pad3 {
     background: green;
+    margin-left: 4px;
 }
 
 #pad4 {
@@ -101,7 +117,7 @@ h1 {
 
 .stage { 
     height: 240px;
-    width: 610px;
+    width: 640px;
     padding-top: 120px;
     padding-left: 40px;
     background-image:url('../images/ryuStage.jpg'); 

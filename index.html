@@ -21,7 +21,7 @@
             </div>
         </div>
             
-        <div class="row">
+        <div class="row scorebox">
             <div>Wins <h5 class='wins'></h5></div>
             <div>Losses <h5 class='losses'></h5></div>
             <div>Damage <h5 class='damage'></h5></div>
@@ -38,12 +38,15 @@
             </div>
         </div>
 
-        <div class="row clearfix">
-            <div class="stage">
+        <div class="row">
+            <div class="col-6 stage">
                 <div class="ken idle"></div>
             </div>
+            <div class="col-5 gif">
+                <img id='winner'>
+            </div>
         </div>
-        
+        <br>        
         <div class="row d-none">
             <div class="col-6">
                 <div class="row">
@@ -62,14 +65,11 @@
             </div>
         </div>
 
-        
-
         <div class="row">
             <button class="newGame">Start Game</button>
         </div>
     
         <!-- <img id='loser'> -->
-        <img id='winner'>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    
