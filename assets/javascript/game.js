@@ -122,18 +122,20 @@ $(document).ready(function() {
         },
     };
 
+
     $('#pad1').click(function(e) {
         $('.ken').addClass('punch');
         setTimeout(function() { 
             $('.ken').removeClass('punch'); 
         }, 250);
     });
-    // $('#pad2').click(function(e) {
-    //     $('.ken').addClass('hadoken');
-    //     setTimeout(function() { 
-    //         $('.ken').removeClass('hadoken'); 
-    //     }, 250);
-    // });
+
+    $('#pad2').click(function(e) {
+        $('.ken').addClass('hadoken');
+        setTimeout(function() { 
+            $('.ken').removeClass('hadoken'); 
+        }, 430);
+    });
 
 
     // var $fireball = $('<div/>', {class:'fireball'});

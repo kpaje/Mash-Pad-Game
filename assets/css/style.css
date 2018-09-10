@@ -122,8 +122,9 @@ img {
     padding-left: 40px;
     background-image:url('../images/ryuStage.jpg'); 
 }
+
 .ken { 
-    width:50px; 
+    width:95px; 
     height:100px;
     background-image:url('../images/ken.png'); 
 }
@@ -132,13 +133,22 @@ img {
     animation: idle steps(4) 0.45s infinite; 
 }
 @keyframes idle {
-    from { background-position: -5px 0px; }
-    to { background-position: -205px 0px; }
+    from { background-position: 0px 0px; }
+    to { background-position: -412px 0px; }
 }
+
 .punch { 
-    animation: punch steps(3) 0.45s infinite; 
+    animation: punch steps(3) 0.35s infinite; 
 }
 @keyframes punch {
-    from { background-position: -5px -115px; }
-    to { background-position: -145px -115px; }
+    from { background-position: 0px -116px; }
+    to { background-position: -282px -116px; }
+}
+
+.hadoken { 
+    animation: hadoken steps(6) 0.55s infinite; 
+}
+@keyframes hadoken {
+    from { background-position: 0px -243px; }
+    to { background-position: -582px -243px; }
 }
