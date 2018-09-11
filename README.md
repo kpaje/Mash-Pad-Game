@@ -1,6 +1,6 @@
 # Mash-Pad-Game
 
-Welcome to The Sibling Simulator!
+Ken vs SNES!
 
 Here, you are the youngest child playing against your older sibling!
 Mash buttons to win! Figure it out, buddy, you have no idea what you're doing!
