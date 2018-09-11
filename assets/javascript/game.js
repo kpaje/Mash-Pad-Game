@@ -137,6 +137,13 @@ $(document).ready(function() {
         }, 430);
     });
 
+    $('#pad3').click(function(e) {
+        $('.ken').addClass('senpukyaku');
+        setTimeout(function() { 
+            $('.ken').removeClass('senpukyaku'); 
+        }, 900);
+    });
+
 
     // var $fireball = $('<div/>', {class:'fireball'});
     // $fireball.appendTo($('.ken'));

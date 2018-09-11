@@ -125,7 +125,8 @@ img {
 
 .ken { 
     width:95px; 
-    height:100px;
+    height:155px;
+    margin-top: -65px;
     background-image:url('../images/ken.png'); 
 }
 
@@ -133,22 +134,30 @@ img {
     animation: idle steps(4) 0.45s infinite; 
 }
 @keyframes idle {
-    from { background-position: 0px 0px; }
-    to { background-position: -412px 0px; }
+    from { background-position: 0px 20px; }
+    to { background-position: -412px 20px; }
 }
 
 .punch { 
     animation: punch steps(3) 0.35s infinite; 
 }
 @keyframes punch {
-    from { background-position: 0px -116px; }
-    to { background-position: -282px -116px; }
+    from { background-position: 0px -148px; }
+    to { background-position: -282px -148px; }
 }
 
 .hadoken { 
     animation: hadoken steps(6) 0.55s infinite; 
 }
 @keyframes hadoken {
-    from { background-position: 0px -243px; }
-    to { background-position: -582px -243px; }
+    from { background-position: 0px -303px; }
+    to { background-position: -582px -303px; }
+}
+
+.senpukyaku { 
+    animation: senpukyaku steps(9) 1.0s infinite; 
+}
+@keyframes senpukyaku {
+    from { background-position: 0px -500px; }
+    to { background-position: -882px -500px; }
 }
